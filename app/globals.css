@@ -1,33 +1,136 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+ 
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+ 
+    --popover: 0 0% 20%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --primary: 252, 100%, 62%;
+    --primary-foreground: 252, 100%, 84%; /* hover */
+ 
+    --secondary: 252, 100%, 96%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 0 0% 45%;
+    --muted-foreground: 0 0% 85%;
+ 
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 100% 61%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 0 0% 85%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+ 
+    --radius: 0.5rem;
+
+    --cl-red: 255,57,57;
+    --cl-white: 255,255,255;
+    --cl-lightgrey: 250,250,250;
+    --cl-borders: 217,217,217;
+    --cl-grey: 115,115,115;
+    --cl-darkgrey: 51,51,51;
+    --cl-lightpurple: 239,235,255;
+    --cl-purplehover: 190,173,255;
+    --cl-purple: 99,60,255;
   }
+ 
+ 
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+html {
+  min-height: 100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  min-height: 100%;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+
+
+.fs-bold-M {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 150%;
 }
+
+.fs-bold-S {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+.fs-body-M {
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+.fs-body-S {
+  font-size: 0.75rem;
+  line-height: 150%;
+}
+
+.input-icon {
+  position: absolute;
+  margin-left: 1rem;
+  pointer-events: none;
+}
+
+.input-normal:focus-visible {
+  box-shadow: 1px 2px 15px rgba(var(--cl-purple), 0.25), 1px -2px 15px rgba(var(--cl-purple),0.25);
+
+}
+
+.input-error:focus-visible {
+  box-shadow: 1px 2px 15px rgba(var(--cl-red), 0.25), 1px -2px 15px rgba(var(--cl-red),0.25);
+}
+
+.selectItemContainer div svg g path,
+.selectItemContainer div svg path{
+  fill: #737373;
+}
+
+.selectItemContainer:hover div svg g path,
+.selectItemContainer:hover div svg path,
+.selectItemContainer:focus div svg g path,
+.selectItemContainer:focus div svg path{
+  fill: #633CFF;
+}
+
+.NavContainer svg g path,
+.NavContainer svg path{
+  fill: #737373;
+}
+
+.NavContainerActive svg g path,
+.NavContainerActive svg path{
+  fill: #633CFF;
+}
+
+.NavContainer:hover svg g path,
+.NavContainer:hover svg path,
+.NavContainer:focus svg g path,
+.NavContainer:focus svg path,
+.NavContainer:active svg g path,
+.NavContainer:active svg path{
+  fill: #633CFF;
+}
+
