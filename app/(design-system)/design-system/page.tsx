@@ -13,7 +13,6 @@ import {
   SelectValue,
   SelectScrollUpButton,
 } from "@/components/ui/select";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -43,9 +42,10 @@ interface ImageProps {
   initialData: User | null;
 }
 
-const designSystem: React.FC<ImageProps> = ({ initialData }) => {
+const DesignSystem: React.FC<ImageProps> = ({ initialData }) => {
   const form = useForm<ImageUploadFormValues>({
     resolver: zodResolver(formSchema),
+    //@ts-ignore
     defaultValues: initialData || {
       userId: "",
       profile_img: "",
@@ -58,15 +58,15 @@ const designSystem: React.FC<ImageProps> = ({ initialData }) => {
 
   const [selectInput, setSelectInput] = useState("");
 
-  const handleSelectChange = (value:any) => {
+  const handleSelectChange = (value: any) => {
     setSelectInput(value);
   };
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
 
-    console.log('Select Input', selectInput)
-  }
+    console.log("Select Input", selectInput);
+  };
 
   return (
     <>
@@ -413,10 +413,12 @@ const designSystem: React.FC<ImageProps> = ({ initialData }) => {
         <div className="flex mx-auto">
           <Form {...form}>
             <form
+              //@ts-ignore
               onSubmit={form.handleSubmit(onSubmit)}
               className="space-y-8 w-full"
             >
               <FormField
+                //@ts-ignore
                 control={form.control}
                 name="profile_img"
                 render={({ field }) => (
@@ -451,10 +453,10 @@ const designSystem: React.FC<ImageProps> = ({ initialData }) => {
         </div>
       </div>
       <div className="max-w-96 my-5">
-        <LinkForm count={1}/>
+        <LinkForm count={1} />
       </div>
     </>
   );
 };
 
-export default designSystem;
+export default DesignSystem;
