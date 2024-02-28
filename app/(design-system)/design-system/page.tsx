@@ -42,7 +42,7 @@ interface ImageProps {
   initialData: User | null;
 }
 
-const DesignSystem: React.FC<ImageProps> = ( initialData ) => {
+export const DesignSystem: React.FC<ImageProps> = ( initialData ) => {
   const form = useForm<ImageUploadFormValues>({
     resolver: zodResolver(formSchema),
     //@ts-ignore
@@ -459,4 +459,4 @@ const DesignSystem: React.FC<ImageProps> = ( initialData ) => {
   );
 };
 
-export default DesignSystem;
+// export default DesignSystem;
