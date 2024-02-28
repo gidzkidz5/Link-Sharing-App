@@ -38,10 +38,10 @@ const formSchema = z.object({
 type ImageUploadFormValues = z.infer<typeof formSchema>;
 
 //replace with prisma data
-interface ImageProps {
-  initialData: User | null;
-}
-export default function DesignSystemPage( initalData: ImageProps ) {
+// interface ImageProps {
+//   initialData: User | null;
+// }
+export default function DesignSystemPage( initalData: any ) {
   const form = useForm<ImageUploadFormValues>({
     resolver: zodResolver(formSchema),
     //@ts-ignore
