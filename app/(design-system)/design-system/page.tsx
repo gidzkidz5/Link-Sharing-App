@@ -41,8 +41,7 @@ type ImageUploadFormValues = z.infer<typeof formSchema>;
 interface ImageProps {
   initialData: User | null;
 }
-
-export const DesignSystem: React.FC<ImageProps> = ( initialData ) => {
+export default function DesignSystemPage( initalData: ImageProps ) {
   const form = useForm<ImageUploadFormValues>({
     resolver: zodResolver(formSchema),
     //@ts-ignore
@@ -457,6 +456,6 @@ export const DesignSystem: React.FC<ImageProps> = ( initialData ) => {
       </div>
     </>
   );
-};
+}
 
 // export default DesignSystem;
