@@ -19,7 +19,7 @@ export default function DashboardHomePage({
       <main className="bg-accent-foreground min-h-full min-w-full">
         <FormDataProvider>
           <div className="sm:mx-6 2xl:mx-24 sm:py-6 2xl:pt-6 2xl:pb-24 min-h-full">
-            <SecondaryNav />
+            <SecondaryNav userId={userId}/>
             <br />
             {children}
           </div>

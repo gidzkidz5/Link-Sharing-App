@@ -1,5 +1,5 @@
 import prismadb from "@/lib/prismadb";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export async function POST(
@@ -8,8 +8,13 @@ export async function POST(
 ) {
   try {
     const { userId } = auth();
+    const userDetails = await currentUser();
     const body = await req.json();
-
+    console.log( "userId - api for form: ", userId )
+    // console.log("userDetails -api for form: ")
+    // console.log(userDetails?.firstName)
+    // console.log(userDetails?.lastName)
+    // console.log(userDetails?.emailAddresses[0])
     const profile = await prismadb.user.findFirst({
       where: {
         userId: params.profileId

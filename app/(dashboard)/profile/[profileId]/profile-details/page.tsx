@@ -1,11 +1,13 @@
+import TestComponent from "@/components/TestComponent";
 import { auth, currentUser } from "@clerk/nextjs";
-import axios from "axios";
+
 
 const ProfileDetailsPage = async () => {
   const { userId } = auth();
   const user = await currentUser();
 
-  await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/whatever`, {testobj: "test"})
+  
+  
 
   return (
     <>
@@ -19,6 +21,10 @@ const ProfileDetailsPage = async () => {
       first_name: {user?.firstName}
       <br />
       last_name: {user?.lastName}
+      <br/>
+      {/* <Button text="Testing Btn" onClick={(e)=>testing(e)}/> */}
+      <TestComponent/>
+  
     </>
   );
 };

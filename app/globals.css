@@ -44,8 +44,6 @@
     --cl-purplehover: 190,173,255;
     --cl-purple: 99,60,255;
   }
- 
- 
 }
  
 @layer base {
@@ -56,6 +54,7 @@
     @apply bg-background text-foreground;
   }
 }
+
 html {
   min-height: 100%;
 }

@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { testobj } = body;
     console.log("userId: ",userId)
-    // console.log("testobj: ",testobj)
+    console.log("testobj: ",testobj)
 
     
 

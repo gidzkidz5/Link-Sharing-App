@@ -44,7 +44,6 @@ export default function Home() {
     redirect("/sign-in");
   } else {
     findUser();
-
     // redirect(`/profile/${userId}`);
   }
 

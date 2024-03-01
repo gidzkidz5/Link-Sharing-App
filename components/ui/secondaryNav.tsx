@@ -7,9 +7,10 @@ import { UserButton } from "@clerk/nextjs";
 import IconPreview from "./icons/icon-preview";
 
 
-const SecondaryNav = () => {
+const SecondaryNav = ({userId}: {userId: string}) => {
   const pathname = usePathname();
   const params = useParams();
+ 
 
   // const routes = [
   //     {
@@ -78,7 +79,7 @@ const SecondaryNav = () => {
               ? " bg-secondary text-primary NavContainerActive"
               : "bg-accent-foreground NavContainer"
           )}
-          href={`/profile/${params.profileId}`}
+          href={`/profile/${userId}`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +99,7 @@ const SecondaryNav = () => {
         <Link
           className={cn(
             "flex gap-4 items-center justify-center hover:cursor-pointer hover:text-primary px-7 py-[10px] rounded-lg NavContainer",
-            pathname === `/profile/${params.profileId}/profile-details`
+            pathname === `/profile/${userId}/profile-details`
               ? " bg-secondary text-primary NavContainerActive"
               : "bg-accent-foreground NavContainer"
           )}

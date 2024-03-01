@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   className?: string;
   variant?: "primary" | "secondary";
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e?:any) => void;
 };
 
 const Button: React.FC<ButtonProps> = ({
