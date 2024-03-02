@@ -43,7 +43,7 @@ export default function FullForm() {
       />
       <div className="w-full">
         
-        <LinkForm count={formLinkCount} />
+        <LinkForm />
   
 
         {isEmpty && <EmptyIllustration />}

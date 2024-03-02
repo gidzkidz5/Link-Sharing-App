@@ -50,11 +50,6 @@ export default function RedirectProvider() {
       console.log("Initial client-side render");
       isInitialRender.current = false; // Update ref after initial render
 
-      //   console.log("isFetching", isFetching);
-      //   console.log(
-      //     "Executing useEffect on:",
-      //     typeof window !== "undefined" ? "client-side" : "server-side"
-      //   );
     }
   }, [isFetching]);
 
