@@ -3,6 +3,7 @@ import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ToasterProvider } from "@/providers/toast-provider";
+import RedirectProvider from "@/providers/redirect-provider";
 
 // const inter = Inter({ subsets: ["latin"] });
 const instrument = Instrument_Sans({ subsets: ["latin"] });
@@ -22,6 +23,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${instrument.className}`}>
           <ToasterProvider />
+          <RedirectProvider />
           {children}
         </body>
       </html>

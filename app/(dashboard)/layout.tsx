@@ -1,9 +1,9 @@
 import SecondaryNav from "@/components/ui/secondaryNav";
-import { FormDataProvider } from "@/providers/form-provider";
+import { ModalProvider } from "@/providers/modal-provider";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-export default function DashboardHomePage({
+export default async function DashboardHomePage({
   children,
 }: {
   children: React.ReactNode;
@@ -11,19 +11,19 @@ export default function DashboardHomePage({
   const { userId } = auth();
 
   if (!userId) {
+    console.log("no user id: ", userId);
     redirect("/sign-in");
   }
 
   return (
     <>
       <main className="bg-accent-foreground min-h-full min-w-full">
-        <FormDataProvider>
-          <div className="sm:mx-6 2xl:mx-24 sm:py-6 2xl:pt-6 2xl:pb-24 min-h-full">
-            <SecondaryNav userId={userId}/>
-            <br />
-            {children}
-          </div>
-        </FormDataProvider>
+        <ModalProvider />
+        <div className="sm:mx-6 2xl:mx-24 sm:py-6 2xl:pt-6 2xl:pb-24 min-h-full">
+          <SecondaryNav />
+          <br />
+          {children}
+        </div>
       </main>
     </>
   );

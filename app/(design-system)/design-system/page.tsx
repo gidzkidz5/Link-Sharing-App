@@ -45,7 +45,7 @@ export default function DesignSystemPage( initalData: any ) {
   const form = useForm<ImageUploadFormValues>({
     resolver: zodResolver(formSchema),
     //@ts-ignore
-    defaultValues: initialData || {
+    defaultValues: {
       userId: "",
       profile_img: "",
     },

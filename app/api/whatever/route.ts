@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     console.log("userDetails: ")
     console.log(userDetails?.firstName)
     console.log(userDetails?.lastName)
-    console.log(userDetails?.emailAddresses[0])
+    console.log(userDetails?.emailAddresses[0].emailAddress)
 
     if (!userId) {
         return new NextResponse("Unauthenticated", { status: 403 });

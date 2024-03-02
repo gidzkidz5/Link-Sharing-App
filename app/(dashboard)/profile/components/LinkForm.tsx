@@ -9,25 +9,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useFormData } from "@/providers/form-provider";
 
-const LinkForm = ({ count }: { count: any }) => {
-  const { formDataLocal, setFormDataLocal } = useFormData();
-  // const [formData, setFormData] = useState<any[]>(() => {
-  //   if (!formDataLocal) {
-  //     return [
-  //       ["GitHub", ""],
-  //       [null, null],
-  //       [null, null],
-  //       [null, null],
-  //       [null, null],
-  //     ];
-  //   } else return formDataLocal;
-  // });
+const LinkForm = () => {
+  const {
+    formDataLocal,
+    setFormDataLocal,
+    formLinkCount,
+    setFormLinkCount,
+    initialData,
+  } = useFormData();
 
   const [loading, setLoading] = useState(false);
   const params = useParams();
@@ -43,7 +38,7 @@ const LinkForm = ({ count }: { count: any }) => {
   const handleSelectChange = (value: any, id: number) => {
     //@ts-ignore
     setFormDataLocal((prevState) => {
-      const newArray: [string | null, string | null][] = [...prevState ]
+      const newArray: [string | null, string | null][] = [...prevState];
       newArray[id][0] = value;
       return newArray;
     });
@@ -51,23 +46,38 @@ const LinkForm = ({ count }: { count: any }) => {
 
   const handleLinkChange = (e: any, id: number) => {
     //@ts-ignore
-    setFormDataLocal(prevState => {
+    setFormDataLocal((prevState) => {
       const newArray = [...prevState];
       newArray[id][1] = e.target.value;
       return newArray;
     });
   };
 
+  const removeLink = (id: number) => {
+    console.log("clicked remove", id);
+    //@ts-ignore
+    setFormDataLocal((prevState) => {
+      const newArray = [...prevState];
+      newArray.splice(id, 1);
+      const newArray2 = [...newArray, [null, null]]
+      console.log(newArray2)
+      //@ts-expect-error
+      setFormLinkCount(formLinkCount - 1)
+      return newArray2;
+    });
+    router.refresh()
+   
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       setLoading(true);
-      // if (formData) { //need to alter later to check for initial data
-      //   await axios.patch(`/api/${params.profileId}`,formData)
-      // } else {
-      //   await axios.post(`/api/${params.profileId}`,formData)
-      // }
-      await axios.post(`/api/profile/${params.profileId}`, formDataLocal);
+      if (!initialData) {
+        await axios.post(`/api/profile/${params.profileId}`, formDataLocal);
+      } else {
+        await axios.patch(`/api/profile/${params.profileId}`, formDataLocal);
+      }
 
       router.refresh();
       toast.success("Profile Created");
@@ -78,9 +88,11 @@ const LinkForm = ({ count }: { count: any }) => {
     }
   };
 
+
+
   return (
     <form onSubmit={handleSubmit} id="myForm">
-      {Array(count)
+      {Array(formLinkCount)
         .fill(null)
         .map((_, id) => (
           <div
@@ -100,14 +112,21 @@ const LinkForm = ({ count }: { count: any }) => {
                 <DragDrop />
                 <p className="fs-bold-S text-muted">Link #{id + 1}</p>
               </div>
-              <p className="fs-body-M text-muted">Remove</p>
+              <p
+                className="fs-body-M text-muted"
+                onClick={() => removeLink(id)}
+              >
+                Remove
+              </p>
             </div>
             <label>Platform</label>
-            
-            {(formDataLocal![id][0]) ? (
+
+            {formDataLocal![id][0] ? (
               <Select
                 onValueChange={(value) => handleSelectChange(value, id)}
                 defaultValue={formDataLocal![id][0]}
+                value={formDataLocal![id][0]}
+                key={id}
               >
                 <SelectTrigger className="">
                   <SelectValue placeholder="Dropdown Field Default" />
@@ -673,7 +692,10 @@ const LinkForm = ({ count }: { count: any }) => {
 
             <label>Link</label>
             {/* <Input ref={linkRef} /> */}
-            <Input onChange={(e) => handleLinkChange(e, id)} value={formDataLocal![id][1]}/>
+            <Input
+              onChange={(e) => handleLinkChange(e, id)}
+              value={formDataLocal![id][1] || ""}
+            />
           </div>
         ))}
     </form>
