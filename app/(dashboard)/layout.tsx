@@ -17,13 +17,10 @@ export default async function DashboardHomePage({
 
   return (
     <>
-      <main className="bg-accent-foreground min-h-full min-w-full">
+      <main className="bg-accent-foreground min-h-full min-w-full h-fit">
         <ModalProvider />
-        <div className="sm:mx-6 2xl:mx-24 sm:py-6 2xl:pt-6 2xl:pb-24 min-h-full">
-          <SecondaryNav />
-          <br />
-          {children}
-        </div>
+
+        {children}
       </main>
     </>
   );

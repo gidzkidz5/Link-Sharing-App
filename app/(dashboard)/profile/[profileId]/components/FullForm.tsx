@@ -3,27 +3,48 @@
 import Button from "@/components/ui/button";
 import EmptyIllustration from "@/components/ui/icons/icon-empty";
 import { Separator } from "@/components/ui/separator";
-import LinkForm from "../../components/LinkForm";
+
 import { useState } from "react";
 import { useFormData } from "@/providers/form-provider";
+import LinkForm from "../../components/LinkForm";
+import toast from "react-hot-toast";
 
 export default function FullForm() {
   const isEmpty = false;
-  const [disabledBtnLink, setDisabledBtnLink] = useState(false)
 
-  const { formLinkCount, setFormLinkCount } = useFormData();
+  const { formDataLocal, setFormDataLocal, formLinkCount, setFormLinkCount } =
+    useFormData();
 
-  const handleLinkCount = () => {
-    if (formLinkCount) {
-      if (formLinkCount >= 5) {
+  const handleLinkCount = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    //@ts-ignore
+    setFormLinkCount((prevState: number) => {
+      if (prevState >= 5) {
         //cannot add more links
-        alert("Cannot add more links");
-        setDisabledBtnLink(true)
-      } else {
-        setFormLinkCount!(formLinkCount + 1);
-        
+        console.log("in Fullform.tsx: more than 5 links!");
+        alert("Cannot have more than 5 links!");
+        //@ts-ignore
+        setFormDataLocal!((prevData) => {
+          const newArray = [...prevData];
+          return newArray.slice(0, 5);
+        });
+        return prevState;
+      } else if (prevState < 1) {
+        alert("Must have at least 1 link!");
+        return prevState;
       }
-    }
+      //@ts-ignore
+      setFormDataLocal!((prevArray) => {
+        console.log("activated");
+        const newArray = [...prevArray, [null, null]];
+        // newArray.push([null, null]);
+        console.log("newArray: ", newArray);
+        return newArray;
+      });
+
+      return prevState + 1;
+    });
   };
 
   return (
@@ -38,13 +59,10 @@ export default function FullForm() {
         text={"+ Add new link"}
         variant="secondary"
         className="mb-10"
-        onClick={handleLinkCount}
-        disabled={disabledBtnLink}
+        onClick={(e) => handleLinkCount(e)}
       />
       <div className="w-full">
-        
         <LinkForm />
-  
 
         {isEmpty && <EmptyIllustration />}
       </div>

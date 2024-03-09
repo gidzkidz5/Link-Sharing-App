@@ -1,17 +1,19 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import Button from "./button";
 import { UserButton } from "@clerk/nextjs";
 import IconPreview from "./icons/icon-preview";
 
-
 const SecondaryNav = () => {
   const pathname = usePathname();
   const params = useParams();
- 
+  const router = useRouter();
 
+  const pushPreview = () => {
+    router.push(`/profile/${params.profileId}`);
+  };
   // const routes = [
   //     {
   //         href:`/${params.profileId}` ,
@@ -128,11 +130,13 @@ const SecondaryNav = () => {
           text="Preview"
           variant="secondary"
           className="hidden md:block"
+          onClick={pushPreview}
         />
-        <Button 
-          text={<IconPreview/>}
+        <Button
+          text={<IconPreview />}
           variant="secondary"
           className="md:hidden"
+          onClick={pushPreview}
         />
       </div>
     </div>

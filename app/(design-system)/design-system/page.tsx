@@ -71,7 +71,7 @@ export default function DesignSystemPage( initalData: any ) {
     <>
       <div className="w-full flex flex-col max-w-4xl items-center justify-center">
         <h2>Tabs</h2>
-        <SecondaryNav userId={"undefined"} />
+        <SecondaryNav/>
       </div>
       <div className="flex flex-wrap gap-8">
         <div className="w-full max-w-4xl px-4 flex flex-col gap-4">
@@ -452,7 +452,7 @@ export default function DesignSystemPage( initalData: any ) {
         </div>
       </div>
       <div className="max-w-96 my-5">
-        <LinkForm count={1} />
+        <LinkForm/>
       </div>
     </>
   );
