@@ -19,7 +19,7 @@ export default function PreviewCard({
 
     
   return (
-    <div className="z-10 flex flex-col justify-center relative top-20">
+    <div className="z-10 flex flex-col justify-center relative top-10 sm:top-20">
       <div className="bg-white flex flex-col previewCard rounded-3xl min-w-80 py-12 px-14 relative mx-auto">
         <div className="flex flex-col justify-center space-y-6 mb-14">
           <div className="justify-center flex">
