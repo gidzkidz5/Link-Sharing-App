@@ -1,7 +1,8 @@
-
+import AnimatedAvatar from "./AnimatedAvatar";
 import ProfileLinks from "./ProfileLinks";
+import ProfileLinksChild from "./ProfileLinksChild";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useFormData } from "@/providers/form-provider";
+import { motion } from "framer-motion";
 
 export default function PreviewCard({
   imageSrc,
@@ -16,33 +17,33 @@ export default function PreviewCard({
   linksHeader: string[];
   links: string[];
 }) {
-
-    
   return (
-    <div className="z-10 flex flex-col justify-center relative top-10 sm:top-20">
+    <div className="z-10 flex flex-col justify-center relative top-8 sm:top-16 md:top-20">
       <div className="bg-white flex flex-col previewCard rounded-3xl min-w-80 py-12 px-14 relative mx-auto">
-        <div className="flex flex-col justify-center space-y-6 mb-14">
-          <div className="justify-center flex">
-            <Avatar className="outline-4 outline-primary outline">
-              <AvatarImage
-                src={imageSrc}
-                alt="@shadcn"
-                loading="lazy"
-                className="object-cover"
-              />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          </div>
-          <div className="space-y-2 text-center">
-            <h2 className="fs-bold-M text-popover mx-auto">{fullName}</h2>
-            <p className="fs-body-M text-muted mx-auto">{email}</p>
-          </div>
-        </div>
-        <div className="w-fit flex flex-col gap-5 mx-auto">
+        <AnimatedAvatar
+          imageSrc={imageSrc}
+          alt={fullName}
+          email={email}
+          fullName={fullName}
+        />
+
+        <ProfileLinksChild linksHeader={linksHeader} links={links} />
+        {/* <motion.div
+          className="w-fit flex flex-col gap-5 mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
           {linksHeader
             ?.filter((item) => item[0] !== null)
             .map((item, id) => (
-              <a href={links[id]} key={id} target="_blank" rel="noopener noreferrer">
+              <motion.a
+                href={links[id]}
+                key={id}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={itemVariants}
+              >
                 <ProfileLinks
                   key={id}
                   text={item}
@@ -64,9 +65,9 @@ export default function PreviewCard({
                   }
                   className={`min-w-60 max-h-14`}
                 />
-              </a>
+              </motion.a>
             ))}
-        </div>
+        </motion.div> */}
       </div>
     </div>
   );

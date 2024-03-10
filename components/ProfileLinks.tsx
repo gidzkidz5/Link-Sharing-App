@@ -16,9 +16,10 @@ import GitlabIcon from "./ui/icons/icon-gitLab";
 import Hashnode from "./ui/icons/icon-hashnode";
 import StackOverflow from "./ui/icons/icon-stackOverflow";
 import Codepen from "./ui/icons/icon-codepen";
+import { motion } from "framer-motion";
 
 const profileLinkVariants = cva(
-  "w-full max-w-60 max-h p-4 flex justify-between items-center rounded-lg text-white max-h-14",
+  "w-full max-w-60 p-4 flex justify-between items-center rounded-lg text-white max-h-14",
   {
     variants: {
       variant: {
@@ -90,7 +91,7 @@ const ProfileLinks: React.FC<ProfileLinkProps> = ({
   };
 
   return (
-    <div
+    <motion.div
       className={cn(
         profileLinkVariants({ variant }),
         className,
@@ -98,13 +99,13 @@ const ProfileLinks: React.FC<ProfileLinkProps> = ({
       )}
       style={style}
       onClick={onClick}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
     >
-      <div className="flex justify-start items-center gap-4 fs-body-M ">
+      <div className="flex justify-start items-center gap-4 fs-body-M">
         {socialIcons[variant]}
-
         {text}
       </div>
-
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -117,7 +118,7 @@ const ProfileLinks: React.FC<ProfileLinkProps> = ({
           d="M2.667 7.333v1.334h8L7 12.333l.947.947L13.227 8l-5.28-5.28L7 3.667l3.667 3.666h-8Z"
         />
       </svg>
-    </div>
+    </motion.div>
   );
 };
 
