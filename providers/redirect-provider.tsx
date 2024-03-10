@@ -51,7 +51,7 @@ export default function RedirectProvider() {
       isInitialRender.current = false; // Update ref after initial render
 
     }
-  }, [isFetching]);
+  }, [isFetching, isInitialRender.current]);
 
   return null;
 }

@@ -88,15 +88,27 @@ const LinkForm = () => {
     try {
       setLoading(true);
       if (!initialData) {
-        await axios.post(`/api/profile/${params.profileId}`, formDataLocal);
+        toast.promise(
+          axios.post(`/api/profile/${params.profileId}`, formDataLocal),
+          {
+            loading: "Submitting Info",
+            error: "Something went wrong",
+            success: "Profile Created",
+          }
+        );
       } else {
-        await axios.patch(`/api/profile/${params.profileId}`, formDataLocal);
+        toast.promise(
+          axios.patch(`/api/profile/${params.profileId}`, formDataLocal),
+          {
+            loading: "Updating profile",
+            error: "Something went wrong",
+            success: "Profile updated",
+          }
+        );
       }
-
-      toast.success("Profile Created");
       router.refresh();
     } catch (error) {
-      toast.error("Something went wrong");
+      console.log(error)
     } finally {
       setLoading(false);
     }
@@ -120,7 +132,7 @@ const LinkForm = () => {
               >
                 <div className="flex justify-between items-center">
                   <div className="flex justify-between items-center gap-2">
-                    <DragDrop className="hover:cursor-move"/>
+                    <DragDrop className="hover:cursor-move" />
                     <p className="fs-bold-S text-muted">Link #{id + 1}</p>
                   </div>
                   <p

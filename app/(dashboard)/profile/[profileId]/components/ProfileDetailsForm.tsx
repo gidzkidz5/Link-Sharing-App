@@ -56,19 +56,20 @@ export default function ProfileDetailsForm() {
   const onSubmit = async (data: ProfileFormValues) => {
     try {
       setLoading(true);
-      await axios.patch(
-        `/api/profile/${params.profileId}/profile-details`,
-        data
+      toast.promise(
+        axios.patch(`/api/profile/${params.profileId}/profile-details`, data),
+        {
+          loading: "Updating profile",
+          success: "Profile Updated",
+          error: "Something went wrong",
+        }
       );
-
-      toast.success("Profile Updated");
     } catch (error) {
-      toast.error("Something went wrong");
+      console.log(error);
     } finally {
       setLoading(false);
       window.location.reload();
     }
-    console.log("profileformData: ", data);
   };
 
   return (
@@ -110,18 +111,6 @@ export default function ProfileDetailsForm() {
                         </FormControl>
                       </div>
                       <FormMessage />
-                      {/* <Avatar className="">
-                  <AvatarImage
-                    src={
-                      field.value
-                        ? field.value
-                        : "https://res.cloudinary.com/dwviiuoes/image/upload/v1708674224/izix8lh6uunlcaskrxlz.png"
-                    }
-                    alt="@shadcn"
-                    loading="lazy"
-                  />
-                  <AvatarFallback>CN</AvatarFallback>
-                </Avatar> */}
                     </FormItem>
                   )}
                 />
