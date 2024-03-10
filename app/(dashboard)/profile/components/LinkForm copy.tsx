@@ -145,7 +145,7 @@ const LinkForm = () => {
           >
             <div className="flex justify-between items-center ">
               <div className="flex justify-between items-center gap-2">
-                <DragDrop />
+                <DragDrop className="hover:cursor-move" />
                 <p className="fs-bold-S text-muted">Link #{id + 1}</p>
               </div>
               <p

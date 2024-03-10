@@ -13,7 +13,6 @@ const PreviewNav = () => {
   const origin = useOrigin();
 
   const baseUrl = `${origin}/profile/${params.profileId}`;
-  console.log("origin: ", baseUrl);
 
   const shareLink = () => {
     navigator.clipboard.writeText(baseUrl);
