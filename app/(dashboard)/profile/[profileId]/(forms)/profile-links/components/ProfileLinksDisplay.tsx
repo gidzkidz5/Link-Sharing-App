@@ -3,9 +3,12 @@
 import PhoneOverlay from "@/components/ui/phone-overlay";
 import { useFormData } from "@/providers/form-provider";
 import FullForm from "../../../components/FullForm";
+import { useUserModal } from "@/hooks/use-user-modal";
+import { useEffect } from "react";
 
 const ProfileLinksDisplay = () => {
   const { formDataLocal, formDataLocalProfile } = useFormData();
+  const { isOpen, onClose } = useUserModal();
 
   const links = formDataLocal
     ?.filter((item) => item[0] !== null)
@@ -15,6 +18,12 @@ const ProfileLinksDisplay = () => {
     formDataLocalProfile.first_name! + " " + formDataLocalProfile.last_name!;
 
   const email = formDataLocalProfile.email!;
+
+  useEffect(() => {
+    if (isOpen) {
+      onClose();
+    }
+  }, [isOpen, onClose]);
   return (
     <div className="grid grid-cols-5 gap-4 sm:w-full h-full mx-4 sm:mx-auto">
       <div className="bg-white rounded-xl col-span-2 md:flex justify-center items-start pt-28 hidden">
