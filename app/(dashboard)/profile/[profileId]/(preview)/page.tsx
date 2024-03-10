@@ -20,6 +20,12 @@ const ProfileIdPage = async ({ params }: { params: { profileId: string } }) => {
     },
   });
 
+  const user = await prismadb.user.findUnique({
+    where: {
+      id: params.profileId,
+    },
+  });
+
   const links = linkshref.map((item) => {
     const isAbsolute = isAbsoluteUrl(item.link);
     if (isAbsolute) {
@@ -32,7 +38,7 @@ const ProfileIdPage = async ({ params }: { params: { profileId: string } }) => {
 
   const platforms = linkshref.map((item) => item.platform.platform);
 
-
+  const fullName = `${user?.first_name} ${user?.last_name}`;
 
   return (
     <>
@@ -42,9 +48,9 @@ const ProfileIdPage = async ({ params }: { params: { profileId: string } }) => {
         </div>
         <PreviewNav />
         <PreviewCard
-          imageSrc="https://res.cloudinary.com/dwviiuoes/image/upload/v1709700775/bf74cdjbo96p3zt7me9y.png"
-          fullName="Ben Wright"
-          email="benwright@gmail.com"
+          imageSrc={user?.profile_img || ""}
+          fullName={fullName}
+          email={user?.email || ""}
           linksHeader={platforms}
           links={links}
         />

@@ -56,13 +56,15 @@ const PreviewNav = () => {
   return (
     <nav className="flex justify-between p-4 rounded-lg bg-white items-center z-10 relative sm:mx-6 px-6 py-4 sm:top-6 sm:mb-20">
       <div>
-        <Button
-          text="Back to Editor"
-          variant="primary"
-          onClick={() =>
-            router.push(`/profile/${params.profileId}/profile-links`)
-          }
-        />
+        {userId && (
+          <Button
+            text="Back to Editor"
+            variant="primary"
+            onClick={() =>
+              router.push(`/profile/${params.profileId}/profile-links`)
+            }
+          />
+        )}
       </div>
       <div className="flex gap-6 items-center">
         {userId && (

@@ -14,7 +14,7 @@ import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useFormData } from "@/providers/form-provider";
-import { Reorder } from "framer-motion";
+import { Reorder, useDragControls } from "framer-motion";
 
 const LinkForm = () => {
   const {
@@ -26,6 +26,7 @@ const LinkForm = () => {
   } = useFormData();
 
   const [loading, setLoading] = useState(false);
+  // const controls = useDragControls()
 
   const params = useParams();
   const router = useRouter();
@@ -119,7 +120,7 @@ const LinkForm = () => {
               >
                 <div className="flex justify-between items-center">
                   <div className="flex justify-between items-center gap-2">
-                    <DragDrop />
+                    <DragDrop className="hover:cursor-move"/>
                     <p className="fs-bold-S text-muted">Link #{id + 1}</p>
                   </div>
                   <p
