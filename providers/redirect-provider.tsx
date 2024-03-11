@@ -43,8 +43,11 @@ export default function RedirectProvider() {
 
         return null;
       };
+      if (isLoaded && userId) {
       findUser();
       console.log("Executing useEffect on client side");
+      } 
+      
     } else {
       // This code will execute only on the initial client-side render
       console.log("Initial client-side render");

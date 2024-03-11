@@ -1,3 +1,4 @@
+"use client";
 import AnimatedAvatar from "./AnimatedAvatar";
 import ProfileLinks from "./ProfileLinks";
 import ProfileLinksChild from "./ProfileLinksChild";
@@ -19,7 +20,20 @@ export default function PreviewCard({
 }) {
   return (
     <div className="z-10 flex flex-col justify-center relative top-8 sm:top-16 md:top-20">
-      <div className="bg-white flex flex-col previewCard rounded-3xl min-w-80 py-12 px-14 relative mx-auto">
+      <motion.div
+        className="bg-white flex flex-col previewCard rounded-3xl min-w-80 py-12 px-14 relative mx-auto"
+        initial={{
+          scaleX: 0,
+          scaleY: 0.008,
+          opacity: 1,
+        }}
+        animate={{
+          scaleX: [0, 1, 1],
+          scaleY: [0.008, 0.008, 1],
+          opacity: 1,
+        }}
+        transition={{ duration: 0.9, ease: "easeInOut" }}
+      >
         <AnimatedAvatar
           imageSrc={imageSrc}
           alt={fullName}
@@ -68,7 +82,7 @@ export default function PreviewCard({
               </motion.a>
             ))}
         </motion.div> */}
-      </div>
+      </motion.div>
     </div>
   );
 }

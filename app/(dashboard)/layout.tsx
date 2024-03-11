@@ -9,23 +9,14 @@ export default async function DashboardHomePage({
 }: {
   children: React.ReactNode;
 }) {
-  const { userId } = auth();
+  // const { userId } = auth();
 
-  if (!userId) {
-    console.log("no user id: ", userId);
-    redirect("/sign-in");
-  }
-
-  // const user = await prismadb.user.findFirst({
-  //   where: {
-  //     userId,
-  //   },
-  // });
-
-  // if (user) {
-  //   redirect(`/profile/${user.id}`);
+  // if (!userId) {
+  //   console.log("no user id: ", userId);
+  //   redirect("/sign-in");
   // }
 
+ 
   return (
     <>
       <main className="bg-accent-foreground min-h-full min-w-full h-fit">

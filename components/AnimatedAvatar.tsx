@@ -18,6 +18,7 @@ const AnimatedAvatar = ({
       className="flex flex-col justify-center space-y-6 mb-14"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      transition={{delay: 0.95}}
     >
       <div className="justify-center flex">
         <Avatar className="outline-4 outline-primary outline">
@@ -27,7 +28,7 @@ const AnimatedAvatar = ({
             loading="lazy"
             className="object-cover"
           />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarFallback>{fullName}</AvatarFallback>
         </Avatar>
       </div>
       <div className="space-y-2 text-center">

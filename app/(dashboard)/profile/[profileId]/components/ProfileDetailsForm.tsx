@@ -56,19 +56,20 @@ export default function ProfileDetailsForm() {
   const onSubmit = async (data: ProfileFormValues) => {
     try {
       setLoading(true);
-      toast.promise(
-        axios.patch(`/api/profile/${params.profileId}/profile-details`, data),
-        {
-          loading: "Updating profile",
-          success: "Profile Updated",
-          error: "Something went wrong",
-        }
-      );
+      toast
+        .promise(
+          axios.patch(`/api/profile/${params.profileId}/profile-details`, data),
+          {
+            loading: "Updating profile",
+            success: "Profile Updated",
+            error: "Something went wrong",
+          }
+        )
+        .then((data) => window.location.reload());
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
-      window.location.reload();
     }
   };
 

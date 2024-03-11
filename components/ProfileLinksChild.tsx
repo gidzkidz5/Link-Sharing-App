@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 import ProfileLinks from "./ProfileLinks";
 
 const ProfileLinksChild = ({
@@ -14,10 +14,10 @@ const ProfileLinksChild = ({
     show: {
       opacity: 1,
       transition: {
+        delayChildren: 1.1,
         staggerChildren: 0.18,
-        duration: 0.65,
+        duration: 0.7,
         ease: "easeInOut",
-        // Adjust the time between each child animation
       },
     },
   };
@@ -47,7 +47,7 @@ const ProfileLinksChild = ({
               key={id}
               text={item}
               variant={
-                item.toLowerCase().replace(".", "") as
+                item.toLowerCase().replace(".", "").replace(" ", "") as
                   | "github"
                   | "frontendmentor"
                   | "twitter"

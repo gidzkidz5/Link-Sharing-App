@@ -32,13 +32,13 @@ const LinkForm = () => {
   const router = useRouter();
 
   //to delete
-  if (formDataLocal) {
-    console.log("formDataLocal is not empty: ", formDataLocal);
-    console.log("formDataLocal[0][0]", formDataLocal[0][0]);
-    console.log("formLinkCount: ", formLinkCount);
-  } else {
-    console.log("formDataLocal is empty: ", formDataLocal);
-  }
+  // if (formDataLocal) {
+  //   console.log("formDataLocal is not empty: ", formDataLocal);
+  //   console.log("formDataLocal[0][0]", formDataLocal[0][0]);
+  //   console.log("formLinkCount: ", formLinkCount);
+  // } else {
+  //   console.log("formDataLocal is empty: ", formDataLocal);
+  // }
 
   const handleSelectChange = (value: any, id: number) => {
     const platforms = formDataLocal?.map((item) => item[0]);
@@ -133,8 +133,8 @@ const LinkForm = () => {
                   exit={{ x: 300, opacity: 0 }}
                 >
                   <div className="flex justify-between items-center">
-                    <div className="flex justify-between items-center gap-2">
-                      <DragDrop className="hover:cursor-move" />
+                    <div className="flex justify-between items-center gap-2 hover:cursor-move">
+                      <DragDrop className="" />
                       <p className="fs-bold-S text-muted">Link #{id + 1}</p>
                     </div>
                     <p

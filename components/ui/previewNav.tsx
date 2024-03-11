@@ -5,6 +5,8 @@ import Button from "./button";
 import { useParams, useRouter } from "next/navigation";
 import { useOrigin } from "@/hooks/use-origin";
 import toast from "react-hot-toast";
+import { revalidatePath } from "next/cache";
+import revalidate from "@/lib/actions";
 
 const PreviewNav = () => {
   const { isLoaded, userId } = useAuth();
@@ -52,17 +54,18 @@ const PreviewNav = () => {
     );
   };
 
+  const goBack = () => {
+    revalidate();
+    router.replace(
+      `/profile/${params.profileId}/profile-links?key=${new Date().getTime()}`
+    );
+  };
+
   return (
     <nav className="flex justify-between p-4 rounded-lg bg-white items-center z-10 relative sm:mx-6 px-6 py-4 sm:top-6 sm:mb-20">
       <div>
         {userId && (
-          <Button
-            text="Back to Editor"
-            variant="primary"
-            onClick={() =>
-              router.push(`/profile/${params.profileId}/profile-links`)
-            }
-          />
+          <Button text="Back to Editor" variant="primary" onClick={goBack} />
         )}
       </div>
       <div className="flex gap-6 items-center">

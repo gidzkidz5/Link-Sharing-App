@@ -124,7 +124,7 @@ const SecondaryNav = () => {
       </nav>
       <div className="flex gap-6 items-center">
         <div className="hidden md:block">
-          <UserButton />
+          <UserButton afterSignOutUrl="/"/>
         </div>
         <Button
           text="Preview"

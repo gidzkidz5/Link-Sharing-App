@@ -3,36 +3,36 @@
 import { motion } from "framer-motion";
 
 const AnimatedLogo = () => {
-  const draw = {
-    hidden: { opacity: 0, fill: "#FFFFFF" },
-    visible: (i: number) => {
-      const delay = 1 + i * 0.5;
-      return {
-        opacity: 1,
-        fill: "#633CFF",
-        transition: {
-          opacity: { delay, duration: 0.01 },
-        },
-      };
-    },
-  };
+  // const draw = {
+  //   hidden: { opacity: 0, fill: "#FFFFFF" },
+  //   visible: (i: number) => {
+  //     const delay = 1 + i * 0.5;
+  //     return {
+  //       opacity: 1,
+  //       fill: "#633CFF",
+  //       transition: {
+  //         opacity: { delay, duration: 0.01 },
+  //       },
+  //     };
+  //   },
+  // };
   return (
     <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      width="320"
-      height="320"
+      width="256"
+      height="256"
       fill="none"
       viewBox="0 0 32 32"
-      initial="hidden"
-      animate="visible"
+      initial={{ rotate: -360, opacity: 0, scale: 0.5, x: 1000 }}
+      animate={{ rotate: 0, opacity: [0, 1], scale: 1.0, x: 0 }}
+      transition={{ duration: 1.25 }} //delay 0.9
+      className="absolute left-0 top-0"
     >
       <motion.path
         fill="#633CFF"
         fillRule="evenodd"
         d="M4.619 27.38c1.954 1.953 5.095 1.953 11.38 1.953 6.286 0 9.429 0 11.38-1.953 1.954-1.95 1.954-5.095 1.954-11.38 0-6.286 0-9.428-1.953-11.381C25.43 2.667 22.285 2.667 16 2.667c-6.286 0-9.428 0-11.381 1.952-1.952 1.954-1.952 5.095-1.952 11.38 0 6.286 0 9.429 1.952 11.38Zm8.047-15.713A4.333 4.333 0 1 0 17 16a1 1 0 0 1 2 0 6.333 6.333 0 1 1-6.334-6.334 1 1 0 1 1 0 2Zm11 4.333a4.333 4.333 0 0 1-4.333 4.333 1 1 0 1 0 0 2A6.333 6.333 0 1 0 13 16a1 1 0 1 0 2 0 4.334 4.334 0 0 1 8.666 0Z"
         clipRule="evenodd"
-        variants={draw}
-        custom={1}
       />
     </motion.svg>
   );

@@ -1,8 +1,4 @@
-import { useParams, usePathname } from "next/navigation";
-import Link from "next/link";
 import { cn, isAbsoluteUrl } from "@/lib/utils";
-import { UserButton, auth } from "@clerk/nextjs";
-import Button from "@/components/ui/button";
 import PreviewNav from "@/components/ui/previewNav";
 import PreviewCard from "@/components/PreviewCard";
 import prismadb from "@/lib/prismadb";
