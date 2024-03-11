@@ -10,7 +10,7 @@ export default function AnimtaedHomePage() {
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.75, delay:0 }}
+          transition={{ duration: 0.75, delay:2.75 }}
         >
           WELCOME
         </motion.span>
@@ -18,7 +18,7 @@ export default function AnimtaedHomePage() {
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.75, delay: 0 }}
+          transition={{ duration: 0.75, delay: 3.25 }}
         >
           TO
         </motion.span>
