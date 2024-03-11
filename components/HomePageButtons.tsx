@@ -13,7 +13,7 @@ const HomePageButtons = ({ className }: { className?: string }) => {
       )}
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.85, duration: 0.7 }}
+      transition={{ delay: 0, duration: 0.7 }}
     >
       <Link href="/sign-in" className="w-full md:max-w-[420px] max-w-[200px]">
         <Button text="Sign-in" />
