@@ -9,9 +9,9 @@ export default function AnimatedLogoBig() {
       height="256"
       fill="none"
       viewBox="0 0 183 40"
-      initial={{ opacity: 0, x: -700 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1.25, delay: 1.2 }}
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.9 }}
     >
       <motion.path
         fill="#333"

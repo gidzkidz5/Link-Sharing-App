@@ -2,7 +2,7 @@
 import { useUserModal } from "@/hooks/use-user-modal";
 import { useEffect } from "react";
 
-import { auth, currentUser, useUser } from "@clerk/nextjs";
+import { auth, currentUser, useAuth, useUser } from "@clerk/nextjs";
 import prismadb from "@/lib/prismadb";
 
 export default function SetupPage() {

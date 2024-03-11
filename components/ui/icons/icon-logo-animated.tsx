@@ -25,7 +25,7 @@ const AnimatedLogo = () => {
       viewBox="0 0 32 32"
       initial={{ rotate: -360, opacity: 0, scale: 0.5, x: 1000 }}
       animate={{ rotate: 0, opacity: [0, 1], scale: 1.0, x: 0 }}
-      transition={{ duration: 1.25 }} //delay 0.9
+      transition={{ duration: 1.25 }}
       className="absolute left-0 top-0"
     >
       <motion.path
