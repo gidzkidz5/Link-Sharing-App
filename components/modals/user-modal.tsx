@@ -78,7 +78,7 @@ const UserModal = () => {
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="E-Commerce"
+                      placeholder="e.g. John"
                       {...field}
                     />
                   </FormControl>
@@ -95,7 +95,7 @@ const UserModal = () => {
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="E-Commerce"
+                      placeholder="e.g. Smith"
                       {...field}
                     />
                   </FormControl>
